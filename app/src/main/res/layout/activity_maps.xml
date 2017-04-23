@@ -13,8 +13,10 @@
         tools:layout="@layout/abc_list_menu_item_radio" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="190dp"
+        android:layout_height="38dp"
+        android:background="@drawable/round"
+        android:textColor="#fff"
         android:text="Get Current Location"
         android:id="@+id/button2"
         android:layout_alignParentBottom="true"

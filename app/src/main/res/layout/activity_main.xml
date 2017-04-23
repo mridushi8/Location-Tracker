@@ -10,45 +10,49 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.hp.map.MainActivity">
 
-    <TextView
-        android:text="Enter the location of the patient:"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView"
-        android:layout_above="@+id/place_autocomplete_fragment"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="57dp" />
-
     <fragment
         android:id="@+id/place_autocomplete_fragment"
         android:layout_width="359dp"
         android:layout_height="wrap_content"
         android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="66dp"
         android:layout_above="@+id/radius"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Enter central location for patient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:layout_marginBottom="36dp"
+        android:layout_above="@+id/place_autocomplete_fragment"
+        android:layout_centerHorizontal="true"
+        android:textSize="18sp" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:hint="Enter Radius"
+        android:hint="Enter Radius in Metres"
         android:ems="10"
         android:id="@+id/radius"
+        android:paddingTop="10dp"
+        android:layout_marginBottom="24dp"
         android:layout_above="@+id/button"
-        android:layout_alignLeft="@+id/place_autocomplete_fragment"
-        android:layout_alignStart="@+id/place_autocomplete_fragment" />
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:text="Go to Map"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/button" />
-
+        android:layout_width="190dp"
+        android:layout_height="36dp"
+        android:id="@+id/button"
+        android:textColor="#fff"
+        android:layout_marginBottom="111dp"
+        android:textSize="18sp"
+        android:background="@drawable/round"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
 
 </RelativeLayout>
