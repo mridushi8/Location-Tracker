@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -17,13 +18,15 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import static com.example.hp.map.R.id.map;
+import com.onesignal.OneSignal;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     Double lat, lon, radius;
     SupportMapFragment mapFragment;
-
+    String flag="0";
+    Intent i1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,12 +36,24 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         lat = i.getExtras().getDouble("latitude");
         lon = i.getExtras().getDouble("longitude");
         radius = i.getExtras().getDouble("radius");
+        i1 = new Intent(MapsActivity.this, MapsActivity2.class);
+
 
 
         mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(map);
 
         mapFragment.getMapAsync(this);
+        findViewById(R.id.button2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //i1.putExtra("radius", Double.valueOf(radius.getText().toString()));
+
+                i1.putExtra("flag", flag);
+                startActivity(i1);
+            }
+        });
+
     }
 
     @Override
@@ -48,11 +63,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Circle circle = mMap.addCircle(new CircleOptions()
                 .center(latLng)
                 .radius(radius)
-                .strokeColor(Color.RED)
-                .fillColor(0x800000FF));
+                .strokeColor(Color.BLUE)
+                .fillColor(0x500000FF));
 
         mMap.addMarker(new MarkerOptions().position(latLng).draggable(true).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
         mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16.0f ));
     }
+
 }
